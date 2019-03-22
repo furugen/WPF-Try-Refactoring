@@ -1,0 +1,39 @@
+﻿<Window xmlns:igWPF="http://schemas.infragistics.com/xaml/wpf"  xmlns:ig="http://schemas.infragistics.com/xaml"  x:Class="TryRefactoring.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TryRefactoring"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!-- 一覧エリア -->
+        <StackPanel  Grid.Column="0" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Click="addBtnClick">行追加</Button>
+                <Button Grid.Column="1" Click="deleteBtnClick">行削除</Button>
+            </Grid>
+            <igWPF:XamDataGrid x:Name="xamDataGrid" RecordActivated="XamDataGrid_RecordActivated" Height="300">
+                <igWPF:XamDataGrid.FieldSettings>
+                    <igWPF:FieldSettings AllowEdit="False" />
+                </igWPF:XamDataGrid.FieldSettings>
+            </igWPF:XamDataGrid>
+        </StackPanel>
+
+        <!-- 編集エリア -->
+        <StackPanel Grid.Column="1" Margin="10">
+            <Button Click="fixBtnClick">編集内容を確定</Button>
+            <ig:XamPropertyGrid  x:Name="xamPropGrid" />
+        </StackPanel>
+
+    </Grid>
+</Window>
