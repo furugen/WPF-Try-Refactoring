@@ -30,9 +30,6 @@ namespace TryRefactoring
 
             // Jsonをシリアライズ化してサンプルデータを設定
             this.xamDataGrid.DataSource = LoadJsonFile();
-
-            // 表示件数を更新する。
-            UpdateCountLabel();
         }
 
         private List<SampleData> LoadJsonFile()
@@ -42,11 +39,6 @@ namespace TryRefactoring
             return JsonConvert.DeserializeObject<List<SampleData>>(fileContent);
         }
 
-        private void UpdateCountLabel()
-        {
-            //List<SampleData> records = this.xamDataGrid.DataSource as List<SampleData>;
-            //this.txbCount.Text = string.Format("{0}件", records.Count);
-        }
 
         private void addBtnClick(object sender, RoutedEventArgs e)
         {
@@ -55,8 +47,6 @@ namespace TryRefactoring
             records.Add(new SampleData());
             this.xamDataGrid.DataSource = null;
             this.xamDataGrid.DataSource = records;
-            // 表示件数を更新
-            UpdateCountLabel();
         }
 
         private void deleteBtnClick(object sender, RoutedEventArgs e)
@@ -66,10 +56,7 @@ namespace TryRefactoring
             records.Remove((SampleData)this.xamDataGrid.ActiveDataItem);
             this.xamDataGrid.DataSource = null;
             this.xamDataGrid.DataSource = records;
-            // 表示件数を更新
-            UpdateCountLabel();
         }
-
 
 
         private void fixBtnClick(object sender, RoutedEventArgs e)
