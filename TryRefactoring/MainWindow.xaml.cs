@@ -22,23 +22,12 @@ namespace TryRefactoring
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string JSON_FILE_PATH = "./Assets/sampledata.json";
-
         public MainWindow()
         {
             InitializeComponent();
-
-            // Jsonをシリアライズ化してサンプルデータを設定
-            this.xamDataGrid.DataSource = LoadJsonFile();
+            // ViewModelを設定
+            this.DataContext = new MainWindowViewModel();
         }
-
-        private List<SampleData> LoadJsonFile()
-        {
-            // Jsonファイルを読み込み、デシリアライズ化し、SampleDataに設定します。
-            string fileContent = System.IO.File.ReadAllText(JSON_FILE_PATH);
-            return JsonConvert.DeserializeObject<List<SampleData>>(fileContent);
-        }
-
 
         private void addBtnClick(object sender, RoutedEventArgs e)
         {

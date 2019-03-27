@@ -22,7 +22,7 @@
                 <Button Grid.Column="0" Click="addBtnClick">行追加</Button>
                 <Button Grid.Column="1" Click="deleteBtnClick">行削除</Button>
             </Grid>
-            <igWPF:XamDataGrid x:Name="xamDataGrid" RecordActivated="XamDataGrid_RecordActivated" Height="300">
+            <igWPF:XamDataGrid x:Name="xamDataGrid" RecordActivated="XamDataGrid_RecordActivated" Height="300" DataSource="{Binding EmployeeData}">
                 <igWPF:XamDataGrid.FieldSettings>
                     <igWPF:FieldSettings AllowEdit="False" />
                 </igWPF:XamDataGrid.FieldSettings>
@@ -32,7 +32,7 @@
         <!-- 編集エリア -->
         <StackPanel Grid.Column="1" Margin="10">
             <Button Click="fixBtnClick">編集内容を確定</Button>
-            <ig:XamPropertyGrid  x:Name="xamPropGrid" />
+            <ig:XamPropertyGrid  x:Name="xamPropGrid"  />
         </StackPanel>
 
     </Grid>
