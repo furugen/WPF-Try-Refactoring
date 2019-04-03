@@ -19,7 +19,7 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Click="addBtnClick">行追加</Button>
+                <Button Grid.Column="0" Command="{Binding AddCommand}">行追加</Button>
                 <Button Grid.Column="1" Click="deleteBtnClick">行削除</Button>
             </Grid>
             <igWPF:XamDataGrid x:Name="xamDataGrid" RecordActivated="XamDataGrid_RecordActivated" Height="300" DataSource="{Binding EmployeeData}">

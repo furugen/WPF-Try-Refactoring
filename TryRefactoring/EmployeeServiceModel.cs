@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace TryRefactoring
     {
         private string JSON_FILE_PATH = "./Assets/sampledata.json";
 
-        public List<SampleData> Employees { get; set; }
+        public ObservableCollection<SampleData> Employees { get; set; }
 
         public EmployeeServiceModel()
         {
@@ -34,11 +35,17 @@ namespace TryRefactoring
         /// Jsonファイルを読み込み、社員情報(SampleData)へデシリアライズします。
         /// </summary>
         /// <returns></returns>
-        private List<SampleData> LoadJsonFile()
+        private ObservableCollection<SampleData> LoadJsonFile()
         {
             // Jsonファイルを読み込み、デシリアライズ化し、SampleDataに設定します。
             string fileContent = System.IO.File.ReadAllText(JSON_FILE_PATH);
-            return JsonConvert.DeserializeObject<List<SampleData>>(fileContent);
+            return JsonConvert.DeserializeObject<ObservableCollection<SampleData>>(fileContent);
+        }
+
+
+        public void AddEmployee()
+        {
+            this.Employees.Add(new SampleData());
         }
 
 
