@@ -29,25 +29,6 @@ namespace TryRefactoring
             this.DataContext = new MainWindowViewModel();
         }
 
-        private void addBtnClick(object sender, RoutedEventArgs e)
-        {
-            // 行を追加する
-            List<SampleData> records = this.xamDataGrid.DataSource as List<SampleData>;
-            records.Add(new SampleData());
-            this.xamDataGrid.DataSource = null;
-            this.xamDataGrid.DataSource = records;
-        }
-
-        private void deleteBtnClick(object sender, RoutedEventArgs e)
-        {
-            // 選択行を削除する。
-            List<SampleData> records = this.xamDataGrid.DataSource as List<SampleData>;
-            records.Remove((SampleData)this.xamDataGrid.ActiveDataItem);
-            this.xamDataGrid.DataSource = null;
-            this.xamDataGrid.DataSource = records;
-        }
-
-
         private void fixBtnClick(object sender, RoutedEventArgs e)
         {
             SampleData editData = this.xamPropGrid.SelectedObject as SampleData;

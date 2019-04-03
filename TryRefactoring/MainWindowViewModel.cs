@@ -11,11 +11,15 @@ namespace TryRefactoring
 {
     public class MainWindowViewModel
     {
+        public SampleData SelectedActiveDataItem { get; set; }
+
         private EmployeeServiceModel employeeServiceModel;
 
         public ObservableCollection<SampleData> EmployeeData { get; set; }
 
         public AddCommand AddCommand { get; set; }
+
+        public RemoveCommand RemoveCommand { get; set; }
 
         public MainWindowViewModel()
         {
@@ -26,12 +30,20 @@ namespace TryRefactoring
 
             // コマンドを追加
             this.AddCommand = new AddCommand(this);
+            // 行削除コマンドを追加
+            this.RemoveCommand = new RemoveCommand(this);
         }
 
         public void OnAddRecord()
         {
             // 社員情報のModelに社員情報を追加する。
             this.employeeServiceModel.AddEmployee();
+        }
+
+        public void OnRemoveRecord()
+        {
+            // 社員情報のModelから社員情報を削除する。
+            this.employeeServiceModel.RemoveEmployee(this.SelectedActiveDataItem);
         }
 
     }

@@ -48,6 +48,12 @@ namespace TryRefactoring
             this.Employees.Add(new SampleData());
         }
 
+        public void RemoveEmployee(SampleData targetData)
+        {
+            this.Employees.Remove(targetData);
+        }
+
+
 
     }
 }
